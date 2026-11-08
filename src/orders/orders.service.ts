@@ -1,11 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Order } from 'src/mongo/schemas/orders.schema';
+import { Order } from '../mongo/schemas/orders.schema';
 import { UpdateOrderDto } from './dtos/updateOrder.dto';
-import { Service } from 'src/mongo/schemas/service.schema';
-import { Product } from 'src/mongo/schemas/product.schema';
-import { PaginatedDto } from 'src/shared/dtos/paginated.dto';
+import { Service } from '../mongo/schemas/service.schema';
+import { Product } from '../mongo/schemas/product.schema';
+import { PaginatedDto } from '../shared/dtos/paginated.dto';
 
 @Injectable()
 export class OrdersService {

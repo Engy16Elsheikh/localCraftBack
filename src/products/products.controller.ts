@@ -15,14 +15,14 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import { Product } from 'src/mongo/schemas/product.schema';
+import { Product } from '../mongo/schemas/product.schema';
 import { CreateProductDto } from './dtos/createProduct.dto';
 import { UpdateProductDto } from './dtos/updateProduct.dto';
-import { ParseObjectIdPipe } from 'src/shared/pipes/parseObjectId.pipe';
-import { Roles } from 'src/shared/decorators/roles.decorator';
-import { AuthGuard } from 'src/shared/guards/auth.guard';
-import { RolesGuard } from 'src/shared/guards/roles.guard';
-import { PaginatedDto } from 'src/shared/dtos/paginated.dto';
+import { ParseObjectIdPipe } from '../shared/pipes/parseObjectId.pipe';
+import { Roles } from '../shared/decorators/roles.decorator';
+import { AuthGuard } from '../shared/guards/auth.guard';
+import { RolesGuard } from '../shared/guards/roles.guard';
+import { PaginatedDto } from '../shared/dtos/paginated.dto';
 
 @Controller('products')
 export class ProductsController {

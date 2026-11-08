@@ -13,15 +13,15 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ServicesService } from './services.service';
-import { Service } from 'src/mongo/schemas/service.schema';
+import { Service } from '../mongo/schemas/service.schema';
 import { UpdateServiceDto } from './dtos/updateService.dto';
 import { CreateServiceDto } from './dtos/createService.dto';
-import { ParseObjectIdPipe } from 'src/shared/pipes/parseObjectId.pipe';
-import { RolesGuard } from 'src/shared/guards/roles.guard';
-import { AuthGuard } from 'src/shared/guards/auth.guard';
-import { Roles } from 'src/shared/decorators/roles.decorator';
-import { UsersService } from 'src/users/users.service';
-import { PaginatedDto } from 'src/shared/dtos/paginated.dto';
+import { ParseObjectIdPipe } from '../shared/pipes/parseObjectId.pipe';
+import { RolesGuard } from '../shared/guards/roles.guard';
+import { AuthGuard } from '../shared/guards/auth.guard';
+import { Roles } from '../shared/decorators/roles.decorator';
+import { UsersService } from '../users/users.service';
+import { PaginatedDto } from '../shared/dtos/paginated.dto';
 
 @Controller('services')
 export class ServicesController {

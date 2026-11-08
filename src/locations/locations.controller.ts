@@ -11,8 +11,8 @@ import {
   UseGuards
 } from '@nestjs/common';
 import { LocationsService } from './locations.service';
-import { AuthGuard } from 'src/shared/guards/auth.guard';
-import { ParseObjectIdPipe } from 'src/shared/pipes/parseObjectId.pipe';
+import { AuthGuard } from '../shared/guards/auth.guard';
+import { ParseObjectIdPipe } from '../shared/pipes/parseObjectId.pipe';
 
 @Controller('locations')
 export class LocationsController {

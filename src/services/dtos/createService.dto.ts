@@ -9,7 +9,7 @@ import {
   Min,
   ValidateNested,
 } from 'class-validator';
-import { CategoryNestedDto } from 'src/shared/dtos/category.nested.dto';
+import { CategoryNestedDto } from '../../shared/dtos/category.nested.dto';
 
 export class CreateServiceDto {
   @IsString()

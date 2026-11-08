@@ -10,13 +10,13 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
-import { Order } from 'src/mongo/schemas/orders.schema';
+import { Order } from '../mongo/schemas/orders.schema';
 import { CreateOrderDto } from './dtos/createOrder.dto';
-import { AuthGuard } from 'src/shared/guards/auth.guard';
-import { RolesGuard } from 'src/shared/guards/roles.guard';
-import { Roles } from 'src/shared/decorators/roles.decorator';
-import { ParseIsInPipe } from 'src/shared/pipes/parseIsIn.pipe';
-import { ParseObjectIdPipe } from 'src/shared/pipes/parseObjectId.pipe';
+import { AuthGuard } from '../shared/guards/auth.guard';
+import { RolesGuard } from '../shared/guards/roles.guard';
+import { Roles } from '../shared/decorators/roles.decorator';
+import { ParseIsInPipe } from '../shared/pipes/parseIsIn.pipe';
+import { ParseObjectIdPipe } from '../shared/pipes/parseObjectId.pipe';
 
 const ParseValidSection = new ParseIsInPipe(['services', 'products']);
 

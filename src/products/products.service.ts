@@ -1,12 +1,12 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Product } from 'src/mongo/schemas/product.schema';
+import { Product } from '../mongo/schemas/product.schema';
 import { CreateProductDto } from './dtos/createProduct.dto';
 import { UpdateProductDto } from './dtos/updateProduct.dto';
-import { User } from 'src/mongo/schemas/user.schema';
-import { PaginatedDto } from 'src/shared/dtos/paginated.dto';
-import { PaginateUtils } from 'src/shared/utils/paginate.utils';
+import { User } from '../mongo/schemas/user.schema';
+import { PaginatedDto } from '../shared/dtos/paginated.dto';
+import { PaginateUtils } from '../shared/utils/paginate.utils';
 
 @Injectable()
 export class ProductsService {

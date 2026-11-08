@@ -6,12 +6,12 @@ import {
 } from '@nestjs/common';
 import { MainCategoryDto } from './dtos/mainCategory.dto';
 import { UpdateCategoryDto } from './dtos/updateCategory.dto';
-import { ParseObjectIdPipe } from 'src/shared/pipes/parseObjectId.pipe';
+import { ParseObjectIdPipe } from '../shared/pipes/parseObjectId.pipe';
 import { CategoriesService } from './categories.service';
-import { ParseIsInPipe } from 'src/shared/pipes/parseIsIn.pipe';
-import { AuthGuard } from 'src/shared/guards/auth.guard';
-import { RolesGuard } from 'src/shared/guards/roles.guard';
-import { Roles } from 'src/shared/decorators/roles.decorator';
+import { ParseIsInPipe } from '../shared/pipes/parseIsIn.pipe';
+import { AuthGuard } from '../shared/guards/auth.guard';
+import { RolesGuard } from '../shared/guards/roles.guard';
+import { Roles } from '../shared/decorators/roles.decorator';
 
 const ParseValidSection = new ParseIsInPipe(['services', 'products']);
 @Controller(':section/categories')

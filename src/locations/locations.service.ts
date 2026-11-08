@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { City } from 'src/mongo/schemas/city.schema';
-import { Governorate } from 'src/mongo/schemas/gov.schema';
+import { City } from '../mongo/schemas/city.schema';
+import { Governorate } from '../mongo/schemas/gov.schema';
 
 @Injectable()
 export class LocationsService {

@@ -6,11 +6,11 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { User } from 'src/mongo/schemas/user.schema';
+import { User } from '../mongo/schemas/user.schema';
 import { UpdateUserDto } from './dtos/updateUser.dto';
 import * as bcrypt from 'bcrypt';
-import { PaginatedDto } from 'src/shared/dtos/paginated.dto';
-import { PaginateUtils } from 'src/shared/utils/paginate.utils';
+import { PaginatedDto } from '../shared/dtos/paginated.dto';
+import { PaginateUtils } from '../shared/utils/paginate.utils';
 
 @Injectable()
 export class UsersService {

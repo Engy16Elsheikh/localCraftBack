@@ -1,10 +1,10 @@
 import { MainCategoryDto } from './dtos/mainCategory.dto';
-import { Category } from 'src/mongo/schemas/category.schema';
+import { Category } from '../mongo/schemas/category.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
-import { SCategoryName } from 'src/mongo/models/serviceCategory.model';
-import { PCategoryName } from 'src/mongo/models/productCategory.model';
+import { SCategoryName } from '../mongo/models/serviceCategory.model';
+import { PCategoryName } from '../mongo/models/productCategory.model';
 
 @Injectable()
 export class CategoriesService {

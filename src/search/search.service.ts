@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Service } from 'src/mongo/schemas/service.schema';
+import { Service } from '../mongo/schemas/service.schema';
 import { Model, QueryOptions } from 'mongoose';
-import { Product } from 'src/mongo/schemas/product.schema';
-import { User } from 'src/mongo/schemas/user.schema';
+import { Product } from '../mongo/schemas/product.schema';
+import { User } from '../mongo/schemas/user.schema';
 
 
 @Injectable()

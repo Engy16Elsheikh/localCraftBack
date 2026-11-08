@@ -9,13 +9,13 @@ import {
   Delete,
 } from '@nestjs/common';
 import { FeedbackService } from './feedback.service';
-import { RolesGuard } from 'src/shared/guards/roles.guard';
-import { AuthGuard } from 'src/shared/guards/auth.guard';
-import { Roles } from 'src/shared/decorators/roles.decorator';
-import { ParseIsInPipe } from 'src/shared/pipes/parseIsIn.pipe';
-import { ParseObjectIdPipe } from 'src/shared/pipes/parseObjectId.pipe';
+import { RolesGuard } from '../shared/guards/roles.guard';
+import { AuthGuard } from '../shared/guards/auth.guard';
+import { Roles } from '../shared/decorators/roles.decorator';
+import { ParseIsInPipe } from '../shared/pipes/parseIsIn.pipe';
+import { ParseObjectIdPipe } from '../shared/pipes/parseObjectId.pipe';
 import { CreateFeedbackDto } from './dtos/createFeedback.dto';
-import { Feedback } from 'src/mongo/schemas/feedback.schema';
+import { Feedback } from '../mongo/schemas/feedback.schema';
 
 const ParseValidSection = new ParseIsInPipe(['services', 'products']);
 

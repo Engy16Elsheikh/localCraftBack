@@ -1,5 +1,5 @@
 import { IsStrongPassword } from "class-validator";
-import { EmailCodeDto } from "src/shared/dtos/emailCode.dto";
+import { EmailCodeDto } from "../../shared/dtos/emailCode.dto";
 
 export class ResetPassDto extends EmailCodeDto {
   @IsStrongPassword({ minLength: 8 })

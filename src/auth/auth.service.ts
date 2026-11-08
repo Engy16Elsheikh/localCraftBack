@@ -2,11 +2,11 @@ import { ForbiddenException, HttpException, Injectable, NotFoundException } from
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
-import { User, UserDocument } from 'src/mongo/schemas/user.schema';
+import { User, UserDocument } from '../mongo/schemas/user.schema';
 import { UserRegisterDto } from './dtos/userRegister.dto';
 import { UserLoginDto } from './dtos/userLogin.dto';
 
-import { MailingService } from 'src/shared/mailer/mailing.service';
+import { MailingService } from '../shared/mailer/mailing.service';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { ResetPassDto } from './dtos/resetPass.dto';
