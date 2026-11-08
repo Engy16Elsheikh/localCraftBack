@@ -1,4 +1,9 @@
-import { ForbiddenException, HttpException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ForbiddenException,
+  HttpException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -22,10 +27,11 @@ export class AuthService {
   async login(userData: UserLoginDto) {
     try {
       const user = await this.userModel.findOne({ email: userData.email });
-      const ok = await bcrypt.compare(userData.password, user.password);
-      if (!user || !ok) throw new Error();
+      if (!user || !(await bcrypt.compare(userData.password, user.password))) {
+        throw new Error();
+      }
       if (user.notApproved === true) {
-        return { user: { email: user.email, notApproved: true } }
+        return { user: { email: user.email, notApproved: true } };
       }
       return await this.generateToken(user);
     } catch {
@@ -34,15 +40,20 @@ export class AuthService {
   }
 
   async register(user: UserRegisterDto) {
-  user.password = await bcrypt.hash(user.password, 10);
-  try {
-    await this.userModel.create({ ...user, notApproved: true });
-  } catch (err) {
-    throw new ForbiddenException('User already exists!');
+    user.password = await bcrypt.hash(user.password, 10);
+
+    try {
+      await this.userModel.create({ ...user, notApproved: true });
+    } catch (err) {
+      throw new ForbiddenException('User already exists!');
+    }
+
+    // Must be awaited: on Vercel the function is frozen after the response,
+    // so a fire-and-forget email is never sent.
+    await this.mailingService.sendCode(user.email);
+
+    return { user: { email: user.email, notApproved: true } };
   }
-  await this.mailingService.sendCode(user.email);
-  return { user: { email: user.email, notApproved: true } };
-}
 
   private async generateToken(user: UserDocument) {
     const payload = { email: user.email, sub: user._id };
@@ -60,7 +71,7 @@ export class AuthService {
       const user = await this.userModel.findOne({ email });
       if (!user) throw new Error();
       user.notApproved = undefined;
-      await user.save()
+      await user.save();
       return this.generateToken(user);
     }
     throw new Error();
@@ -69,11 +80,11 @@ export class AuthService {
   async sendConfirmation(email: string, type: string = '') {
     const types = {
       password: 'Password reset code',
-      email: 'Your email confirmation code'
-    }
+      email: 'Your email confirmation code',
+    };
     const user = await this.userModel.findOne({ email });
     if (!user) throw new NotFoundException();
-    this.mailingService.sendCode(email, types[type || 'email']);
+    await this.mailingService.sendCode(email, types[type || 'email']);
   }
 
   async resetPassword(data: ResetPassDto) {
@@ -81,7 +92,7 @@ export class AuthService {
       const user = await this.userModel.findOne({ email: data.email });
       if (!user || !user.email) throw new Error();
       user.password = await bcrypt.hash(data.password, 10);
-      user.save();
+      await user.save();
       return this.login(data);
     }
     throw new Error();
