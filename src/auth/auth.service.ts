@@ -34,15 +34,15 @@ export class AuthService {
   }
 
   async register(user: UserRegisterDto) {
-    user.password = await bcrypt.hash(user.password, 10);
-    try {
-      await this.userModel.create({ ...user, notApproved: true });
-      this.mailingService.sendCode(user.email);
-      return { user: { email: user.email, notApproved: true } };
-    } catch (err) {
-      throw new ForbiddenException('User already exists!');
-    }
+  user.password = await bcrypt.hash(user.password, 10);
+  try {
+    await this.userModel.create({ ...user, notApproved: true });
+  } catch (err) {
+    throw new ForbiddenException('User already exists!');
   }
+  await this.mailingService.sendCode(user.email);
+  return { user: { email: user.email, notApproved: true } };
+}
 
   private async generateToken(user: UserDocument) {
     const payload = { email: user.email, sub: user._id };
