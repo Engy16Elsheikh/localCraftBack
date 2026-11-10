@@ -2,7 +2,7 @@ import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable } from '@nestjs/common';
 import { createHmac } from 'crypto';
 
-// الكود صالح من 10 إلى 20 دقيقة (النافذة الحالية + السابقة)
+ 
 const WINDOW_MS = 10 * 60 * 1000;
 
 @Injectable()
